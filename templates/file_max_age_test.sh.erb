@@ -6,7 +6,7 @@ limit_file=/tmp/$file_name-limit
 touch -d "$file_max_age_in_days days" $limit_file
 
 if [ $file_name -ot $limit_file ]; then
-  echo "Warning: file ${file_name} has not been updated within ${file_max_age_in_days} days"
+  echo "Warning: file ${file_name} has not been updated within ${file_max_age_in_days} days. <%=error_message%>"
   exit 1
 else
   echo "All OK: file ${file_name} has been updated within ${file_max_age_in_days} days"
