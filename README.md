@@ -23,9 +23,13 @@
       }
     }
 
-The above snippet create a Bash script
+The above snippet creates a Bash script
 `/opt/monitoring-tasks/my-web-app-http_smoke_test.sh`.
-Furthermore, it will add the script into `/etc/snmp/snmpd.conf`.
+Furthermore, it will add the script into `/etc/snmp/snmpd.conf` and restart
+`Service['net-snmp']`.
+
+By default, the smoke test will hit `localhost`. You can change the host by
+adding the parameter `http_hostname_or_ip`.
 
 ### Monitoring file timestamps
 
@@ -38,6 +42,10 @@ Furthermore, it will add the script into `/etc/snmp/snmpd.conf`.
         tasks_home_directory => "/opt/monitoring-tasks"
       }
     }
+
+The above snippet creates a Bash script that will exit with code 1 if the file
+`/opt/logs/cron-job-timestamp` is more than one days old. Before exit, it will
+print the `error_message`.
 
 ## Dependencies
 
