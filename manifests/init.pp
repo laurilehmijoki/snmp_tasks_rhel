@@ -7,6 +7,7 @@ class snmp_tasks_rhel::wget {
 define snmp_tasks_rhel::http_smoke_test(
   $application = $title,
   $http_port,
+  $http_hostname_or_ip = 'localhost',
   $tasks_home_directory,
   $smoke_test_path = '/') {
 

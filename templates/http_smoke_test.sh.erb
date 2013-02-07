@@ -4,7 +4,7 @@ export PATH=$PATH:/usr/local/bin
 
 PORT=<%= http_port %>
 SMOKE_TEST_PATH="<%= smoke_test_path %>"
-URL="http://127.0.0.1:$PORT$SMOKE_TEST_PATH"
+URL="http://<%=http_hostname_or_ip%>:$PORT$SMOKE_TEST_PATH"
 TIMEOUT=5
 
 wget -O /dev/null --timeout=$TIMEOUT --tries=3 --retry-connrefused --waitretry=3 --quiet $URL
