@@ -1,12 +1,16 @@
+class snmp_tasks_rhel::wget {
+  package { "wget":
+    ensure => installed
+  }
+}
+
 define snmp_tasks_rhel::http_smoke_test(
   $application = $title,
   $http_port,
   $tasks_home_directory,
   $smoke_test_path = '/') {
 
-  package { "wget":
-    ensure => installed
-  }
+  include snmp_tasks_rhel::wget
 
   $file_path = "$tasks_home_directory/$application-http_smoke_test.sh"
 
