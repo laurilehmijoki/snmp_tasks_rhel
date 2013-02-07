@@ -27,6 +27,18 @@ The above snippet create a Bash script
 `/opt/monitoring-tasks/my-web-app-http_smoke_test.sh`.
 Furthermore, it will add the script into `/etc/snmp/snmpd.conf`.
 
+### Monitoring file timestamps
+
+    # In site.pp
+    node "superserver" {
+      snmp_tasks_rhel::file_max_age { "cron-job-monitor":
+        file_to_test         => "/opt/logs/cron-job-timestamp",
+        max_age_in_days      => 1,
+        error_message        => "Cronjob has not run within 1 days",
+        tasks_home_directory => "/opt/monitoring-tasks"
+      }
+    }
+
 ## Dependencies
 
 This Puppet module depends on
