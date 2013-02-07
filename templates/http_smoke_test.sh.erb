@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+export PATH=$PATH:/usr/local/bin
+
+PORT=<%= http_port %>
+SMOKE_TEST_PATH="<%= smoke_test_path %>"
+URL="http://127.0.0.1:$PORT$SMOKE_TEST_PATH"
+TIMEOUT=5
+
+wget -O /dev/null --timeout=$TIMEOUT --tries=3 --retry-connrefused --waitretry=3 --quiet $URL
+result=$?
+
+if [ $result = 0 ]; then
+  printf "Smoke test successful on port $PORT for <%= application %>.\n"
+  exit 0
+fi
+
+printf "Severe: <%= application %> is down at port: $PORT. Do curl -v http://127.0.0.1:$PORT$SMOKE_TEST_PATH for more details\n"
+exit 1
