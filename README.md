@@ -1,4 +1,4 @@
-# SNMP tasks Puppet Forge module
+# SNMP tasks Puppet Forge module for RHEL
 
 ## Features
 
@@ -7,7 +7,7 @@
 
 ## Install
 
-    puppet module install llehmijo/snmp_tasks
+    puppet module install llehmijo/snmp_tasks_rhel
 
 ## Usage
 
@@ -16,7 +16,7 @@
     # In site.pp
     node "superserver" {
       # Add smoke test task for an HTTP application
-      snmp_tasks::http_smoke_test { "my-web-app":
+      snmp_tasks_rhel::http_smoke_test { "my-web-app":
         http_port            => 80,
         smoke_test_path      => "/",
         tasks_home_directory => "/opt/monitoring-tasks"
@@ -30,11 +30,12 @@ Furthermore, it will add the script into `/etc/snmp/snmpd.conf`.
 ## Dependencies
 
 This Puppet module depends on
-[llehmijo/snmp](https://github.com/laurilehmijoki/snmp).
+[llehmijo/snmp_rhel](https://github.com/laurilehmijoki/snmp_rhel).
 
 ## Links
 
-This project in Puppet Forge: <http://forge.puppetlabs.com/llehmijo/snmp_tasks>.
+This project in Puppet Forge:
+<http://forge.puppetlabs.com/llehmijo/snmp_tasks_rhel>.
 
 ## License
 
