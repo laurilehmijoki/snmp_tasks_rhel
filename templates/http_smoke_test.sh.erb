@@ -7,7 +7,7 @@ SMOKE_TEST_PATH="<%= smoke_test_path %>"
 URL="http://<%=http_hostname_or_ip%>:$PORT$SMOKE_TEST_PATH"
 TIMEOUT=5
 
-wget -O /dev/null --timeout=$TIMEOUT --tries=3 --retry-connrefused --waitretry=3 --quiet $URL
+curl -s $URL 1> /dev/null 2> /dev/null
 result=$?
 
 if [ $result = 0 ]; then
