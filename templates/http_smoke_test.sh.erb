@@ -15,5 +15,5 @@ if [ $result = 0 ]; then
   exit 0
 fi
 
-printf "Severe: <%= application %> is down at port: $PORT. Do curl -v http://127.0.0.1:$PORT$SMOKE_TEST_PATH for more details\n"
+printf "Severe: Public web node in production environment is down on port: $PORT Do curl -v http://<%=http_hostname_or_ip%>:$PORT$SMOKE_TEST_PATH for more details\n"
 exit 1
