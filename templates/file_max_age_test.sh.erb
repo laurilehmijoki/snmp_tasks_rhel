@@ -2,10 +2,9 @@
 
 file_name='<%=file_to_test%>'
 file_max_age_in_days=<%=max_age_in_days%>
-limit_file=/tmp/$file_name-limit
-touch -d "$file_max_age_in_days days" $limit_file
 
-if [ $file_name -ot $limit_file ]; then
+if test `find $file_name -mtime +$file_max_age_in_days`
+then
   echo "Warning: file ${file_name} has not been updated within ${file_max_age_in_days} days. <%=error_message%>"
   exit 1
 else
