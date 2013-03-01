@@ -2,6 +2,10 @@
 
 This project is [semantically versioned](http://semver.org)
 
+## 1.1.2
+
+* Fix broken file-max-age test
+
 ## 1.1.1
 
 * Use curl instead of wget
