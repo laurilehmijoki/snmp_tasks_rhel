@@ -1,12 +1,12 @@
 #!/bin/bash -e
 
 file_name='<%=file_to_test%>'
-file_max_age_in_days=<%=max_age_in_days%>
+file_max_age_in_minutes=<%=max_age_in_minutes%>
 
-if test `find $file_name -mtime +$file_max_age_in_days`
+if test `find $file_name -mmin +$file_max_age_in_minutes`
 then
-  echo "Warning: file ${file_name} has not been updated within ${file_max_age_in_days} days. <%=error_message%>"
+  echo "Warning: file ${file_name} has not been updated within ${file_max_age_in_minutes} minutes. <%=error_message%>"
   exit 1
 else
-  echo "All OK: file ${file_name} has been updated within ${file_max_age_in_days} days"
+  echo "All OK: file ${file_name} has been updated within ${file_max_age_in_minutes} minutes"
 fi

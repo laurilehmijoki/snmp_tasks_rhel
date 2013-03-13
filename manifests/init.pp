@@ -34,6 +34,27 @@ define snmp_tasks_rhel::file_max_age(
   $tasks_home_directory) {
 
   $task_file_path = "$tasks_home_directory/$task_name-max_age_test.sh"
+  $max_age_in_minutes = $max_age_in_days * 24 * 60
+
+  file { $title:
+    content => template("snmp_tasks_rhel/file_max_age_test.sh.erb"),
+    path    => $task_file_path,
+    mode    => "0750"
+  }
+
+  snmp_rhel::snmpd_exec { $task_name:
+    command => $task_file_path
+  }
+}
+
+define snmp_tasks_rhel::file_max_age_minutes(
+  $task_name = $title,
+  $file_to_test,
+  $max_age_in_minutes,
+  $error_message,
+  $tasks_home_directory) {
+
+  $task_file_path = "$tasks_home_directory/$task_name-max_age_test.sh"
 
   file { $title:
     content => template("snmp_tasks_rhel/file_max_age_test.sh.erb"),

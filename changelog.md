@@ -2,6 +2,11 @@
 
 This project is [semantically versioned](http://semver.org)
 
+## 1.2.0
+
+* Test file timestamps in one minute precision with
+  `snmp_tasks_rhel::file_max_age_minutes`
+
 ## 1.1.2
 
 * Fix broken file-max-age test

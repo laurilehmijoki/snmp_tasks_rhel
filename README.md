@@ -47,6 +47,15 @@ The above snippet creates a Bash script that will exit with code 1 if the file
 `/opt/logs/cron-job-timestamp` is more than one days old. Before exit, it will
 print the `error_message`.
 
+You can also monitor files with one minute precision:
+
+    snmp_tasks_rhel::file_max_age_minutes { "cron-job-monitor":
+      file_to_test         => "/opt/logs/cron-job-timestamp",
+      max_age_in_minutes   => 5,
+      error_message        => "Cronjob has not run within 5 minutes",
+      tasks_home_directory => "/opt/monitoring-tasks"
+    }
+
 ## Dependencies
 
 This Puppet module depends on
