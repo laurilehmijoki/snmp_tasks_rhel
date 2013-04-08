@@ -2,6 +2,10 @@
 
 This project is [semantically versioned](http://semver.org)
 
+## 1.3.2
+
+* Fix invalid File existence call
+
 ## 1.3.1
 
 * Fix file emptiness file name
