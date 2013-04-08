@@ -2,6 +2,10 @@
 
 This project is [semantically versioned](http://semver.org)
 
+## 1.3.1
+
+* Fix file emptiness file name
+
 ## 1.3.0
 
 * Add task `snmp_tasks_rhel::file_emptiness_test`

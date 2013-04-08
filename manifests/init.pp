@@ -72,7 +72,7 @@ define snmp_tasks_rhel::file_emptiness_test(
   $file_to_test,
   $tasks_home_directory) {
 
-  $task_file_path = "$tasks_home_directory/$task_name-max_age_test.rb"
+  $task_file_path = "$tasks_home_directory/$task_name-file_emptiness_test.rb"
 
   package { 'ruby':
     ensure => present
