@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+file_to_test = '<%= file_to_test %>'
+
+unless File.exists(file_to_test)
+  $stderr.puts "Required file #{file_to_test} is missing."
+  exit 1
+end
+
+unless File.read(file_to_test).empty?
+  $stderr.puts "File #{file_to_test} is not empty, even though it should be."
+  exit 1
+end
+
+puts "All ok. File #{file_to_test} exists and is empty."

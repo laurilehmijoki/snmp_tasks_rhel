@@ -31,6 +31,24 @@ Furthermore, it will add the script into `/etc/snmp/snmpd.conf` and restart
 By default, the smoke test will hit `localhost`. You can change the host by
 adding the parameter `http_hostname_or_ip`.
 
+### Monitoring file emptiness
+
+    # In site.pp
+    node "superserver" {
+      # Add file emptiness test
+      snmp_tasks_rhel::file_emptiness_test { "my_app_error_log":
+        file_to_test         => "/my/app/error.log",
+        tasks_home_directory => "/opt/monitoring-tasks"
+      }
+    }
+
+The above snippet creates a Bash script
+`/opt/monitoring-tasks/my_app_error_log-file_emptiness_test.rb`.
+Furthermore, it will add the script into `/etc/snmp/snmpd.conf` and restart
+`Service['net-snmp']`.
+
+This function will install `Ruby`, if it's not yet present.
+
 ### Monitoring file timestamps
 
     # In site.pp
