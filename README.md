@@ -1,10 +1,5 @@
 # SNMP tasks Puppet Forge module for RHEL
 
-## Features
-
-* Add an HTTP smoke test into `/etc/snmp/snmpd.conf`
-* Add a file-max-age test into `/etc/snmp/snmpd.conf`
-
 ## Install
 
     puppet module install llehmijo/snmp_tasks_rhel
