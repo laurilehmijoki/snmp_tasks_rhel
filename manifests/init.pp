@@ -67,16 +67,19 @@ define snmp_tasks_rhel::file_max_age_minutes(
   }
 }
 
+class snmp_tasks_rhel::ruby {
+  package { 'ruby':
+    ensure => present
+  }
+}
+
 define snmp_tasks_rhel::file_emptiness_test(
   $task_name = $title,
   $file_to_test,
   $tasks_home_directory) {
+  include snmp_tasks_rhel::ruby
 
   $task_file_path = "$tasks_home_directory/$task_name-file_emptiness_test.rb"
-
-  package { 'ruby':
-    ensure => present
-  }
 
   file { $title:
     content => template("snmp_tasks_rhel/file_emptiness_test.rb.erb"),

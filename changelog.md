@@ -2,6 +2,10 @@
 
 This project is [semantically versioned](http://semver.org)
 
+## 1.3.3
+
+* Move Ruby resource declaration into a class
+
 ## 1.3.2
 
 * Fix invalid File existence call
