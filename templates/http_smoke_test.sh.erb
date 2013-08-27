@@ -2,18 +2,18 @@
 
 export PATH=$PATH:/usr/local/bin
 
-PORT=<%= http_port %>
-SMOKE_TEST_PATH="<%= smoke_test_path %>"
-URL="http://<%=http_hostname_or_ip%>:$PORT$SMOKE_TEST_PATH"
+PORT=<%= @http_port %>
+SMOKE_TEST_PATH="<%= @smoke_test_path %>"
+URL="http://<%=@http_hostname_or_ip%>:$PORT$SMOKE_TEST_PATH"
 TIMEOUT=5
 
 curl -sf $URL 1> /dev/null 2> /dev/null
 result=$?
 
 if [ $result = 0 ]; then
-  printf "Smoke test successful on port $PORT for <%= application %>.\n"
+  printf "Smoke test successful on port $PORT for <%= @application %>.\n"
   exit 0
 fi
 
-printf "Severe: Public web node in production environment is down on port: $PORT Do curl -v http://<%=http_hostname_or_ip%>:$PORT$SMOKE_TEST_PATH for more details\n"
+printf "Severe: Public web node in production environment is down on port: $PORT Do curl -v http://<%= @http_hostname_or_ip%>:$PORT$SMOKE_TEST_PATH for more details\n"
 exit 1
