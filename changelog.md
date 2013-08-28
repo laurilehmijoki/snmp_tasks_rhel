@@ -2,6 +2,12 @@
 
 This project is [semantically versioned](http://semver.org)
 
+## 1.3.5
+
+* Prefix erb variables with @
+
+  ... and thus avoid potential incompatibilities with future Puppet versions.
+
 ## 1.3.4
 
 * Make `curl` actually fail on errors
